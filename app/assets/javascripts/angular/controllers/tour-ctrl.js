@@ -62,13 +62,18 @@ function TourCtrl($rootScope, $scope, $state, $localStorage, toastr, Constants, 
     }
 
     $scope.createTour = function(tour){
+        if(tour.name === undefined || tour.name == ''){
+            toastr.error("Please add Tour's name."); 
+            return
+        }
         if(tour.tourMarkers.length > 1){
+            tour.id = Math.random().toString(36).substr(2, 9);
             Map.createTour(tour);
             $localStorage.tours.push(tour); 
             toastr.success("Tour Saved!");  
             $state.go("toursList", {name: tour.name})
         } else {
-            alert("Please add more waypoints.")
+            toastr.error("Please add more waypoints."); 
         }
     }
 
@@ -78,6 +83,22 @@ function TourCtrl($rootScope, $scope, $state, $localStorage, toastr, Constants, 
 
     $scope.showTour = function(index){
         $state.go("toursEdit", {name: $scope.tours[index].name})
+    }
+
+    $scope.updateTour = function(tour,index){
+        if(tour.name == ''){
+            toastr.error("Please add Tour's name."); 
+            return
+        }
+        var index = -1
+        var selectedTour = $scope.tours.filter(function(t){return t.id == tour.id})[0]
+        var index = $scope.tours.indexOf(selectedTour)
+        if(index > -1){
+           $scope.tours[index] = tour 
+           $localStorage.tours = $scope.tours
+           toastr.success("Tour Updated!");
+           $state.go("toursList", {name: tour.name})
+        }
     }
 
 

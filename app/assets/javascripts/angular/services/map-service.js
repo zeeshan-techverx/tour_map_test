@@ -13,8 +13,6 @@ angular_test.service('Map', function($q) {
             document.getElementById('map'), options
             );
         this.places = new google.maps.places.PlacesService(this.map);
-        
-        
     }
     
     this.search = function(str) {
@@ -60,6 +58,7 @@ angular_test.service('Map', function($q) {
         } else if(tour.tourMarkers.length == 1){
             var dest = origin = tour.tourMarkers[0]
         }
+
         var options = {
           origin: origin ? origin.name : "",
           destination: dest ? dest.name : (origin ? origin.name : ""),
@@ -67,13 +66,14 @@ angular_test.service('Map', function($q) {
           optimizeWaypoints: true,
           travelMode: 'DRIVING'
         }
+
         directionsService.route(options, function(response, status) {
-        if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-        } else {
-            window.alert('Directions request failed due to ' + status);
-        }
-    });
-  }
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                toastr.error('Directions request failed due to ' + status)
+            }
+        });
+    }
 
 });
