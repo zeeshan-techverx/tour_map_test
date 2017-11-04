@@ -1,0 +1,14 @@
+{
+  "name": "dsl-generated-dependencies",
+  "dependencies": {
+    "angular": "~1.4.12",
+    "angular-bootstrap": "latest",
+    "bootstrap": "~3.3.7",
+    "bootstrap-social": "~4.8.0",
+    "ui-router": "~v0.2.18",
+    "ngstorage": "latest",
+    "angular-loading-bar": "latest",
+    "ngmap": "latest",
+    "angular-toastr": "~2.0.0"
+  }
+}
