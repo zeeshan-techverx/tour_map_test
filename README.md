@@ -14,5 +14,4 @@ Things you may want to cover:
 * Database creation
 	rails db:create
 
-* Database initialization
 
