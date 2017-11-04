@@ -1,0 +1,7 @@
+development:
+    adapter: postgresql
+    encoding: unicode
+    database: angular_map
+    host: localhost
+    username: postgres
+    password: postgres

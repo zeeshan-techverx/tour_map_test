@@ -1,0 +1,60 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
+html,body{
+    position: relative;
+    height: 100%;
+}
+body {
+  padding-top: 54px;
+}
+
+#map { 
+    height: 400px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+
+.container .row{
+	margin-top: 15px
+}
+@media (min-width: 992px) {
+	body {
+	  padding-top: 56px;
+	}
+}
+
+ul {
+    min-height: 42px;
+    padding-left: 0px;
+}
+
+ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+
+ul .dndPlaceholder {
+    background-color: #ddd;
+    display: block;
+    min-height: 42px;
+}
+
+.col-md-3 ul li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+}
+   
+ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+a{
+    cursor: pointer;
+}

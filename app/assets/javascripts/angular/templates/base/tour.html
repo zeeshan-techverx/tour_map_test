@@ -1,0 +1,61 @@
+<div ng-include data-src="'/assets/angular/templates/base/_header.html'"></div>
+<div class="container" >
+	<div class="row" ng-if="apiError">
+		<div class="alert alert-danger text-center" role="alert">
+			<b>API Error : </b>
+			<span>{{ apiStatus }}</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<h4>Way Points</h4>
+			<ul dnd-list="list">
+			    <li ng-repeat="marker in list"
+			        dnd-draggable="marker"
+			        dnd-moved="list.splice($index, 1)"
+			        dnd-effect-allowed="move"
+			        dnd-selected="selected = marker"
+			        ng-class="{'selected': selected === marker}"
+			        ng-click="addToTour(marker);"
+			        >
+					<a ng-click="addToTour(marker);">{{marker.name}}</a>
+					<a ng-click="addToTour(marker);" style="float: right;">&nbsp;+</a>
+			    </li>
+			</ul>
+			
+ 			<h4>Tour Details</h4>
+			<div class="form-group">
+				<input class="form-control" ng-model="tour.name" placeholder="Tour Name"></input>
+			</div>
+			<div>
+				<ul dnd-list="tour.tourMarkers">
+					<li ng-repeat="item in tour.tourMarkers"
+			        dnd-draggable="item"
+			        dnd-moved="tour.tourMarkers.splice($index, 1)"
+			        dnd-effect-allowed="move"
+			        dnd-selected="selected = item"
+			        ng-class="{'selected': selected === item}"
+					>
+						<label>{{item.name}}</label>
+
+					<a ng-click="removeFromTour($index);" style="float: right;">&nbsp;x</a>
+					</li>
+				</ul>
+			</div>
+			<div class="form-group">
+				<select ng-model="tour.drivers" multiple class="form-control">
+					<option ng-repeat="driver in drivers">{{driver.name}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-success" ng-click="createTour(tour)">Save</button>
+			</div>
+		</div>
+		
+		<div class="col-md-9">
+			<div id="map"></div>
+		</div>
+	
+	</div>
+
+</div>
